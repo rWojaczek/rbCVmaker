@@ -1,0 +1,390 @@
+<div class="cv_creator_container">
+  <form #personForm="ngForm" #f="ngForm" class="basic_info">
+    <h2 class="title">Basic informations</h2>
+    <div class="field">
+      <label for="firstName">First Name:</label>
+      <input
+        placeholder="Your Name.."
+        required
+        #firstName="ngModel"
+        [(ngModel)]="person.basic[0].firstName"
+        class="first_name"
+        type="text"
+        name="firstName"
+      />
+      <div class="alert" *ngIf="firstName.touched && !firstName.valid">
+        first name is required
+      </div>
+    </div>
+    <div class="field">
+      <label for="lastName">Last Name:</label>
+      <input
+        [(ngModel)]="person.basic[0].lastName"
+        #lastName="ngModel"
+        placeholder="Your last Name.."
+        required
+        class="last_name"
+        type="text"
+        name="lastName"
+      />
+      <div class="alert" *ngIf="lastName.touched && !lastName.valid">
+        last name is required
+      </div>
+    </div>
+    <div class="field">
+      <label for="email">email:</label>
+      <input
+        [(ngModel)]="person.basic[0].email"
+        #email="ngModel"
+        placeholder="email.."
+        required
+        class="email"
+        type="text"
+        name="email"
+      />
+    </div>
+    <div class="field">
+      <label for="phoneNumber">Phone Number:</label>
+      <input
+        [(ngModel)]="person.basic[0].phoneNumber"
+        #phoneNumber="ngModel"
+        placeholder="phone number.."
+        required
+        class="phone_number"
+        type="text"
+        name="phoneNumber"
+        minlength="9"
+      />
+    </div>
+    <div class="field">
+      <label for="phoneNumber">City:</label>
+      <input
+        [(ngModel)]="person.basic[0].city"
+        #city="ngModel"
+        placeholder="city.."
+        required
+        class="city"
+        type="text"
+        name="city"
+      />
+    </div>
+    <div class="field">
+      <label for="photo">Photo:</label>
+      <input
+        [(ngModel)]="person.basic[0].photo"
+        #photo
+        class="photo"
+        type="file"
+        name="photo"
+        (change)="selectFile($event)"
+      />
+    </div>
+  </form>
+
+  <form #personForm="ngForm" class="basic_info">
+    <h2 class="title">Education</h2>
+    <div class="field">
+      <label for="uczelnia">School:</label>
+      <input
+        placeholder="School.."
+        required
+        [(ngModel)]="personEducation"
+        class="School"
+        type="text"
+        name="uczelnia"
+      />
+    </div>
+    <div class="field">
+      <label for="kierunek">field of study:</label>
+      <input
+        [(ngModel)]="educationField"
+        placeholder="field of study.."
+        required
+        class="field_study"
+        type="text"
+        name="kierunek"
+      />
+    </div>
+    <div class="field">
+      <label for="kierunek">Education level:</label>
+      <input
+        [(ngModel)]="levelEducation"
+        placeholder="Education level.."
+        required
+        class="level_study"
+        type="text"
+        name="poziom"
+      />
+    </div>
+    <div class="field">
+      <label for="since">From:</label>
+      <input
+        required
+        [(ngModel)]="educationSince"
+        class="since"
+        type="date"
+        name="since"
+      />
+    </div>
+    <div class="field">
+      <label for="for">To:</label>
+      <input
+        [(ngModel)]="educationFor"
+        required
+        class="for"
+        type="date"
+        name="for"
+      />
+    </div>
+    <button (click)="addNextEducation()" class="next">Add</button>
+  </form>
+
+  <form #personForm="ngForm" class="basic_info">
+    <h2 class="title">Experience</h2>
+    <div class="field">
+      <label for="Position">Position:</label>
+      <input
+        placeholder="Position.."
+        required
+        [(ngModel)]="experiencePosition"
+        class="Position"
+        type="text"
+        name="Position"
+      />
+    </div>
+    <div class="field">
+      <label for="Company">Company:</label>
+      <input
+        [(ngModel)]="experienceCompany"
+        placeholder="Company.."
+        class="Company"
+        type="text"
+        name="Company"
+      />
+    </div>
+    <div class="field">
+      <label for="description">description:</label>
+      <input
+        [(ngModel)]="experienceDescription"
+        placeholder="description.."
+        class="description"
+        type="text"
+        name="description"
+      />
+    </div>
+    <div class="field">
+      <label for="since">From:</label>
+      <input
+        [(ngModel)]="experienceSince"
+        class="since"
+        type="date"
+        name="since"
+        id="since"
+      />
+    </div>
+    <div class="field">
+      <label for="for">To:</label>
+      <input
+        [(ngModel)]="experienceFor"
+        class="for"
+        type="date"
+        name="for"
+        id="for"
+      />
+    </div>
+    <button (click)="addExperience()" class="next">Add</button>
+  </form>
+
+  <form #personForm="ngForm" class="basic_info">
+    <h2 class="title">Skills</h2>
+    <div class="field">
+      <label for="skill">Skill:</label>
+      <input
+        placeholder="Skill.."
+        required
+        [(ngModel)]="personSkill"
+        class="skill"
+        type="text"
+        name="skill"
+      />
+    </div>
+
+    <button (click)="addSkill()" class="next">Add</button>
+  </form>
+  <form #personForm="ngForm" class="basic_info">
+    <h2 class="title">Certifications, Trainings</h2>
+    <div class="field">
+      <label for="skill">Certifications, Trainings:</label>
+      <input
+        placeholder="Certifications, Trainings.."
+        required
+        [(ngModel)]="personCertificate"
+        class="certyficate"
+        type="text"
+        name="certyficate"
+      />
+    </div>
+
+    <button (click)="addCertyficate()" class="next">Add</button>
+  </form>
+  <form #personForm="ngForm" class="basic_info">
+    <h2 class="title">Language</h2>
+    <div class="field">
+      <label for="language">Language:</label>
+      <input
+        placeholder="Language.."
+        required
+        [(ngModel)]="personLanguage"
+        class="language"
+        type="text"
+        name="language"
+      />
+    </div>
+    <div class="field">
+      <label for="level">Language level:</label>
+      <input
+        placeholder="Language level.."
+        required
+        [(ngModel)]="personLevel"
+        class="level"
+        type="text"
+        name="level"
+      />
+    </div>
+    <button (click)="addLanguage()" class="next">Add</button>
+  </form>
+  <div class="cv_personalization">
+    <div class="cv_style">
+      <button class="nav_link_button">
+        <a routerLink="/home">HOME</a>
+      </button>
+      <h4 class="choose_style_title">personalize your's cv</h4>
+    </div>
+    <div class="user_customs_choices">
+      <div class="choose_btns">
+        <button class="normal_cv choose_btn">Normal</button>
+        <button class="elegant_cv choose_btn">Elegant</button>
+        <button class="modern_cv choose_btn">Modern</button>
+      </div>
+      <div>
+        <span>font:</span>
+
+        <ul>
+          <li *ngFor="let font of fonts" (click)="changeFont(font)">
+            {{ font }}
+          </li>
+        </ul>
+      </div>
+      <div class="changeColor">
+        <span>color:</span>
+        <ul>
+          <li [style.marginBottom]="'10px'">
+            <input type="color" #col [style.width]="'100px'" />
+          </li>
+
+          <button
+            (click)="changeColor(col)"
+            class="next"
+            [style.width]="'100px'"
+          >
+            CHANGE COLOR
+          </button>
+        </ul>
+      </div>
+      <div>
+        <span>background:</span>
+        <ul>
+          <li
+            *ngFor="let back of backgrounds | keyvalue"
+            (click)="changeBack(back)"
+          >
+            {{ back.key }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div #page [style.color]="'changeColor'" class="page" [style.fontSize]="'16px'">
+  <div class="left_side">
+    <div><img [src]="url" *ngIf="url" class="cv_min_img" /></div>
+    <div class="cv_min_basics cv_min_field">
+      <h2 [style.fontSize]="'24px'">KONTAKT</h2>
+      <li [style.fontWeight]="'300'">
+        email: <span> <br />{{ person.basic[0].email }}</span>
+      </li>
+      <li [style.fontWeight]="'300'">
+        telefon: <span> <br />{{ person.basic[0].phoneNumber }}</span>
+      </li>
+      <li [style.fontWeight]="'300'">
+        Miejscowość:<span> <br />{{ person.basic[0].city }}</span>
+      </li>
+    </div>
+    <div class="cv_min_skils cv_min_field">
+      <h2 [style.fontSize]="'24px'">UMIEJĘTNOŚCI</h2>
+      <ul class="skillsField" *ngFor="let skil of person.skills">
+        <li [style.fontWeight]="'300'">{{ skil.skill }}</li>
+      </ul>
+    </div>
+    <div class="cv_min_languages cv_min_field">
+      <h2 [style.fontSize]="'24px'">JĘZYKI</h2>
+      <ul class="skillsField" *ngFor="let lang of person.language">
+        <li [style.fontWeight]="'300'">
+          <span [style.fontWeight]="'600'"> {{ lang.language }} : </span>
+          {{ lang.level }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="right_side">
+    <div class="full_name">
+      <h1 [style.fontSize]="'70px'">CV</h1>
+      <span [style.fontSize]="'36px'"
+        >{{ person.basic[0].firstName | uppercase }}
+        {{ person.basic[0].lastName | uppercase }}</span
+      >
+    </div>
+
+    <div class="cv_min_exprience cv_min_field">
+      <h2 [style.fontSize]="'24px'">DOŚWIDCZENIE ZAWODOWE</h2>
+      <ul *ngFor="let comp of person.experience">
+        <li [style.fontWeight]="'300'" [style.marginBottom]="'0px'">
+          {{ comp.since }} - {{ comp.for }}
+        </li>
+        <li>
+          {{ comp.position
+          }}<span [style.fontWeight]="'300'"> | {{ comp.company }}</span>
+        </li>
+
+        <li>
+          krótki opis stanowiska:
+          <p [style.fontWeight]="'300'">
+            {{ comp.description }}
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="cv_min_education cv_min_field">
+      <h2 [style.fontSize]="'24px'">WYKSZTAŁCENIE</h2>
+      <ul *ngFor="let edu of person.education">
+        <li [style.fontWeight]="'300'">{{ edu.since }} - {{ edu.for }}</li>
+        <li>
+          {{ edu.school }}
+        </li>
+        <li [style.fontWeight]="'300'">kierunek: {{ edu.field }}</li>
+        <li [style.fontWeight]="'300'">
+          Poziom Wykształcenia: {{ edu.level }}
+        </li>
+      </ul>
+    </div>
+    <div class="cv_min_certyficte cv_min_field">
+      <h2 [style.fontSize]="'24px'">CERTYFIKATY, SZKOLENIA</h2>
+      <ul class="certificateFIeld" *ngFor="let cert of person.certyficate">
+        <li [style.fontWeight]="'300'">{{ cert.certyficate }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<button [disabled]="!f.valid" (click)="convertToPDF()" class="download">
+  Download
+</button>
