@@ -1,5 +1,5 @@
 #live version
-https://rb-cvmaker.netlify.app/home
+https://rb-cvmaker.netlify.app
 
 # Project
 
