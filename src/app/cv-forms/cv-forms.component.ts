@@ -1,13 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { COLORS, BACKGROUND, FONT } from '../settings';
-import {
-  ReactiveFormsModule,
-  FormsModule,
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
